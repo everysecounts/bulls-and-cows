@@ -1,0 +1,54 @@
+{
+  "name": "bulls-and-cows",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint . && stylelint \"src/**/*.css\"",
+    "lint:fix": "eslint . --fix && stylelint \"src/**/*.css\" --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "deploy": "npm run build && gh-pages -d dist -m \"chore: deploy update\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{json,html,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@eslint/js": "^9.39.5",
+    "@vitest/coverage-v8": "^5.1.0",
+    "autoprefixer": "^10.6.2",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "postcss": "^8.5.32",
+    "prettier": "^3.9.10",
+    "stylelint": "^18.0.0",
+    "stylelint-config-standard": "^41.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
+  }
+}
