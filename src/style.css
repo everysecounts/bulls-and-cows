@@ -310,3 +310,83 @@ label {
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+.records-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  width: min(90vw, 600px);
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 20%);
+}
+
+.records-dialog::backdrop {
+  background: rgb(25 20 35 / 60%);
+  backdrop-filter: blur(3px);
+}
+
+.records-content {
+  padding: 2rem;
+}
+
+.records-content h2 {
+  margin: 0 0 1.5rem;
+  padding-right: 2rem;
+}
+
+.records-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.records-close:hover {
+  color: #9b59b6;
+}
+
+.records-close:focus-visible {
+  outline: 2px solid #9b59b6;
+  outline-offset: 2px;
+}
+
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.records-table th,
+.records-table td {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.records-table th {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}

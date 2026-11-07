@@ -1,6 +1,11 @@
 import { createElement } from '@/utils/createElement';
 
-const createHeader = (onNewGame?: () => void): HTMLElement => {
+type HeaderProps = {
+  onNewGame?: () => void;
+  onLeaderboard: () => void;
+};
+
+const createHeader = ({ onNewGame, onLeaderboard }: HeaderProps): HTMLElement => {
   const header = createElement('header', { className: 'header' });
 
   header.append(
@@ -11,6 +16,8 @@ const createHeader = (onNewGame?: () => void): HTMLElement => {
     }),
   );
 
+  const actions = createElement('div', { className: 'header-actions' });
+
   if (onNewGame) {
     const newGameButton = createElement('button', {
       className: 'btn btn-header',
@@ -20,8 +27,19 @@ const createHeader = (onNewGame?: () => void): HTMLElement => {
     newGameButton.setAttribute('type', 'button');
     newGameButton.addEventListener('click', onNewGame);
 
-    header.append(newGameButton);
+    actions.append(newGameButton);
   }
+
+  const leaderboardButton = createElement('button', {
+    className: 'btn btn-header',
+    textContent: 'Leaderboard',
+  });
+
+  leaderboardButton.setAttribute('type', 'button');
+  leaderboardButton.addEventListener('click', onLeaderboard);
+
+  actions.append(leaderboardButton);
+  header.append(actions);
 
   return header;
 };
