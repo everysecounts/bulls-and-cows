@@ -154,3 +154,92 @@ label {
   border-color: var(--primary-hover);
   background: var(--primary-hover);
 }
+
+.btn-guess {
+  width: auto;
+  min-height: 46px;
+  flex: 0 0 auto;
+  margin-top: 0;
+  padding: 0.65rem 1.1rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.guess-input {
+  min-width: 0;
+  flex: 1;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #faf8fc;
+  color: var(--text);
+  font-family: ui-monospace, monospace;
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+}
+
+.guess-input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.history {
+  max-height: 220px;
+  overflow-y: auto;
+  list-style: none;
+  padding-right: 0.5rem;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-family: ui-monospace, monospace;
+}
+
+.history-item .guess {
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.guess-digit-bull {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.guess-digit-cow {
+  color: #9b59b6;
+  font-weight: 700;
+}
+
+.history-item .result {
+  color: var(--muted);
+  font-family: var(--font);
+  text-align: right;
+}
+
+.empty {
+  padding: 0.5rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.card h3 {
+  margin: 1rem 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}

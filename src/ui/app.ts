@@ -1,5 +1,5 @@
 import { generateSecret } from '@/logic/generateSecret';
-import { createInitialState, startGame, type GameState } from '@/game';
+import { createInitialState, startGame, submitGuess, type GameState } from '@/game';
 import { loadSettings, saveSettings } from '@/settings';
 import { createGame, createHeader, createSettings } from './components';
 
@@ -31,7 +31,12 @@ const createApp = (root: HTMLElement): void => {
       return;
     }
 
-    root.append(createGame({ state }));
+    root.append(
+      createGame({
+        state,
+        onGuess: handleGuess,
+      }),
+    );
   };
 
   const handleLengthChange = (length: number): void => {
@@ -65,6 +70,12 @@ const createApp = (root: HTMLElement): void => {
 
     state = startGame(state, secret, Date.now());
 
+    render();
+  };
+
+  const handleGuess = (guess: string): void => {
+    const result = submitGuess(state, guess, Date.now());
+    state = result.state;
     render();
   };
 
