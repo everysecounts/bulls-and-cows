@@ -17,10 +17,10 @@ const createSettings = ({
   onBaseChange,
   onStart,
 }: SettingsProps): HTMLElement => {
-  const section = createElement('section', { className: 'card' });
+  const section = createElement('section', { className: 'card settings-card' });
 
-  section.append(createElement('h2', { textContent: 'Settings' }));
-  section.append(createElement('label', { textContent: 'Length' }));
+  section.append(createElement('h2', { textContent: 'Game setup' }));
+  section.append(createElement('label', { textContent: 'Code length' }));
 
   const lengthGroup = createElement('div', { className: 'btn-group' });
 
@@ -73,7 +73,7 @@ const createSettings = ({
 
   const startButton = createElement('button', {
     className: 'btn btn-primary',
-    textContent: 'Start game',
+    textContent: '✈  Start game',
   });
 
   startButton.addEventListener('click', onStart);

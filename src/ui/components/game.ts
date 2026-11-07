@@ -8,7 +8,7 @@ type GameProps = {
 };
 
 const createGame = ({ state, onGuess }: GameProps): HTMLElement => {
-  const section = createElement('section', { className: 'card' });
+  const section = createElement('section', { className: 'card game-card' });
   const { length, base } = state.settings;
 
   const baseLabels: Record<number, string> = {
@@ -20,9 +20,9 @@ const createGame = ({ state, onGuess }: GameProps): HTMLElement => {
 
   section.append(
     createElement('div', { className: 'meta' }, [
-      createElement('span', { textContent: `Length: ${length}` }),
+      createElement('span', { textContent: `Code length: ${length}` }),
       createElement('span', {
-        textContent: `Base: ${baseLabels[base] ?? base}`,
+        textContent: `System: ${baseLabels[base] ?? base}`,
       }),
       createElement('span', {
         textContent: `Attempts: ${state.history.length}`,
@@ -47,7 +47,7 @@ const createGame = ({ state, onGuess }: GameProps): HTMLElement => {
 
   const submitButton = createElement('button', {
     className: 'btn btn-primary btn-guess',
-    textContent: 'Guess',
+    textContent: 'Check code',
     attributes: { disabled: 'true' },
   });
 
@@ -92,7 +92,7 @@ const createGame = ({ state, onGuess }: GameProps): HTMLElement => {
   inputRow.append(input, submitButton);
   section.append(inputRow);
 
-  section.append(createElement('h3', { textContent: 'History' }));
+  section.append(createElement('h3', { textContent: 'Flight log / Guess history' }));
 
   const historyList = createElement('ul', { className: 'history' });
 

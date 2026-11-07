@@ -50,7 +50,7 @@ const createWin = ({ state, onNewGame }: WinProps): HTMLDialogElement => {
   const content = createElement('div', { className: 'win-content' });
 
   content.append(
-    createElement('h2', { textContent: 'You won!' }),
+    createElement('h2', { textContent: 'You have arrived!' }),
     createElement('p', {
       className: 'win-secret',
       textContent: `Secret: ${state.secret}`,
