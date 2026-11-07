@@ -4,10 +4,7 @@ export const isValidGuess = (guess: string, length: number, base: number): boole
   const isValidDigit = createDigitValidator(base);
   const digits = [...guess.toLowerCase()];
 
-  const isValid =
-    digits.length === length &&
-    digits.every(isValidDigit) &&
-    new Set(digits).size === digits.length;
-
-  return !isValid;
+  return (
+    digits.length === length && digits.every(isValidDigit) && new Set(digits).size === digits.length
+  );
 };
