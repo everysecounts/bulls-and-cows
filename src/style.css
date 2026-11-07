@@ -58,6 +58,10 @@ button:disabled {
   line-height: 1.2;
 }
 
+.btn-header {
+  margin-top: 0.75rem;
+}
+
 .subtitle {
   margin-top: 0.25rem;
   color: var(--muted);
@@ -242,4 +246,67 @@ label {
   margin: 1rem 0 0.5rem;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.win-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.win-content h2 {
+  margin-bottom: 1rem;
+  color: #1f7a46;
+  font-size: 1.7rem;
+}
+
+.win-secret {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.win-stats {
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+}
+
+.win-dialog {
+  width: min(90%, 400px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 20%);
+  position: relative;
+}
+
+.win-dialog::backdrop {
+  background: rgb(25 20 35 / 60%);
+  backdrop-filter: blur(3px);
+}
+
+.win-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.9rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.win-close:hover {
+  color: #9b59b6;
+}
+
+.win-close:focus-visible {
+  color: #9b59b6;
+  outline: 2px solid #9b59b6;
+  outline-offset: 3px;
+  border-radius: 4px;
 }

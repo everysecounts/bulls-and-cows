@@ -1,7 +1,7 @@
 import { generateSecret } from '@/logic/generateSecret';
-import { createInitialState, startGame, submitGuess, type GameState } from '@/game';
+import { createInitialState, resetGame, startGame, submitGuess, type GameState } from '@/game';
 import { loadSettings, saveSettings } from '@/settings';
-import { createGame, createHeader, createSettings } from './components';
+import { createGame, createHeader, createSettings, createWin } from './components';
 
 const createApp = (root: HTMLElement): void => {
   const savedSettings = loadSettings();
@@ -15,7 +15,7 @@ const createApp = (root: HTMLElement): void => {
   });
 
   const render = (): void => {
-    root.replaceChildren(createHeader());
+    root.replaceChildren(createHeader(state.status !== 'settings' ? handleNewGame : undefined));
 
     if (state.status === 'settings') {
       root.append(
@@ -37,6 +37,16 @@ const createApp = (root: HTMLElement): void => {
         onGuess: handleGuess,
       }),
     );
+
+    if (state.status === 'won') {
+      const winDialog = createWin({
+        state,
+        onNewGame: handleNewGame,
+      });
+
+      root.append(winDialog);
+      winDialog.showModal();
+    }
   };
 
   const handleLengthChange = (length: number): void => {
@@ -76,6 +86,11 @@ const createApp = (root: HTMLElement): void => {
   const handleGuess = (guess: string): void => {
     const result = submitGuess(state, guess, Date.now());
     state = result.state;
+    render();
+  };
+
+  const handleNewGame = (): void => {
+    state = resetGame(state);
     render();
   };
 
