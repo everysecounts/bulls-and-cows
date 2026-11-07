@@ -25,7 +25,6 @@ export default defineConfig(({ mode }) => ({
   test: {
     environment: 'node',
     include: ['**/*.test.ts'],
-    passWithNoTests: true,
     coverage: {
       reporter: ['text', 'html'],
     },
