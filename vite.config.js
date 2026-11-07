@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig(({ mode }) => ({
   root: 'src',
+  cacheDir: '../node_modules/.vite',
   publicDir: '../public',
   resolve: {
     alias: {
