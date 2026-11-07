@@ -1,11 +1,8 @@
 import './style.css';
+import { createApp } from './ui/app';
 
-const app = document.createElement('div');
-app.className = 'app';
+const root = document.createElement('div');
+root.id = 'root';
+document.body.append(root);
 
-const heading = document.createElement('h1');
-heading.textContent = 'Bulls and Cows';
-
-app.append(heading);
-
-document.body.append(app);
+createApp(root);
