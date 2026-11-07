@@ -1,4 +1,4 @@
-export const generateSecret = (
+const generateSecret = (
   length: number,
   base: number,
   random: () => number = Math.random,
@@ -13,3 +13,5 @@ export const generateSecret = (
 
   return digits.slice(0, length).join('');
 };
+
+export { generateSecret };

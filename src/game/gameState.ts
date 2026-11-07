@@ -1,20 +1,16 @@
-import { evaluateGuess } from './evaluateGuess';
-import { isValidGuess } from './isValidGuess';
+import { evaluateGuess } from '@/logic/evaluateGuess';
+import { isValidGuess } from '@/logic/isValidGuess';
+import type { GameSettings } from '@/settings';
 
-export type GameSettings = {
-  length: number;
-  base: number;
-};
-
-export type GuessEntry = {
+type GuessEntry = {
   guess: string;
   bulls: number;
   cows: number;
 };
 
-export type GameStatus = 'settings' | 'playing' | 'won';
+type GameStatus = 'settings' | 'playing' | 'won';
 
-export type GameState = {
+type GameState = {
   settings: GameSettings;
   secret: string | null;
   history: GuessEntry[];
@@ -23,7 +19,7 @@ export type GameState = {
   finishedAt: number | null;
 };
 
-export type SubmitGuessResult =
+type SubmitGuessResult =
   | { success: true; state: GameState }
   | {
       success: false;
@@ -31,7 +27,7 @@ export type SubmitGuessResult =
       reason: 'not-playing' | 'invalid-guess' | 'duplicate-guess';
     };
 
-export const createInitialState = (settings: GameSettings): GameState => ({
+const createInitialState = (settings: GameSettings): GameState => ({
   settings,
   secret: null,
   history: [],
@@ -40,7 +36,7 @@ export const createInitialState = (settings: GameSettings): GameState => ({
   finishedAt: null,
 });
 
-export const startGame = (state: GameState, secret: string, startedAt: number): GameState => {
+const startGame = (state: GameState, secret: string, startedAt: number): GameState => {
   if (
     state.status !== 'settings' ||
     !isValidGuess(secret, state.settings.length, state.settings.base)
@@ -58,7 +54,7 @@ export const startGame = (state: GameState, secret: string, startedAt: number): 
   };
 };
 
-export const submitGuess = (state: GameState, guess: string, now: number): SubmitGuessResult => {
+const submitGuess = (state: GameState, guess: string, now: number): SubmitGuessResult => {
   if (state.status !== 'playing' || state.secret === null) {
     return { success: false, state, reason: 'not-playing' };
   }
@@ -94,7 +90,7 @@ export const submitGuess = (state: GameState, guess: string, now: number): Submi
   };
 };
 
-export const resetGame = (state: GameState): GameState => ({
+const resetGame = (state: GameState): GameState => ({
   ...state,
   secret: null,
   history: [],
@@ -102,3 +98,6 @@ export const resetGame = (state: GameState): GameState => ({
   startedAt: null,
   finishedAt: null,
 });
+
+export { createInitialState, resetGame, startGame, submitGuess };
+export type { GameSettings, GameState, GameStatus, GuessEntry, SubmitGuessResult };

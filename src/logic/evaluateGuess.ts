@@ -1,4 +1,4 @@
-export const evaluateGuess = (secret: string, guess: string): { bulls: number; cows: number } => {
+const evaluateGuess = (secret: string, guess: string): { bulls: number; cows: number } => {
   const secretDigits = [...secret.toLowerCase()];
   const guessDigits = [...guess.toLowerCase()];
 
@@ -13,3 +13,5 @@ export const evaluateGuess = (secret: string, guess: string): { bulls: number; c
 
   return { bulls, cows };
 };
+
+export { evaluateGuess };

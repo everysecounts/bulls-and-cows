@@ -1,6 +1,6 @@
 const cache = new Map<string, number>();
 
-export const countPossibleSecrets = (length: number, base: number): number => {
+const countPossibleSecrets = (length: number, base: number): number => {
   if (length < 0 || base < 0 || length > base) {
     return 0;
   }
@@ -21,3 +21,5 @@ export const countPossibleSecrets = (length: number, base: number): number => {
 
   return result;
 };
+
+export { countPossibleSecrets };
