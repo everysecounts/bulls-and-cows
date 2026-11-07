@@ -1,9 +1,10 @@
 import js from '@eslint/js';
+import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
-export default tseslint.config(
+export default defineConfig(
   {
     ignores: ['dist/**', 'node_modules/**', 'coverage/**'],
   },
@@ -17,5 +18,5 @@ export default tseslint.config(
       },
     },
   },
-  eslintConfigPrettier,
+  eslintPluginPrettierRecommended,
 );
